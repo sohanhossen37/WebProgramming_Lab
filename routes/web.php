@@ -6,7 +6,9 @@ use App\Http\Controllers\SigninController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\ProfileController;
-
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\AdminController;
 
 
 
@@ -102,3 +104,37 @@ Route::get('/profile', function () {
         return redirect()->route('customer.show', ['id' => $user->id]);
     }
 })->name('profile_show');
+
+
+
+Route::get('/admin', [AdminController::class, 'admin']) ->name('admin') ;
+
+
+
+
+
+ Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+
+
+ Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');
+ Route::get('/categories/list', [CategoryController::class, 'index'])->name('categories.index');
+
+Route::get('/categories/{category_id}/services', [CategoryController::class, 'showServices'])->name('categories.services');
+
+//for drop down 
+//Route::get('/', [CategoryController::class, 'index'])->name('topdowncategories'); 
+Route::get('/topdowncategories', [CategoryController::class, 'topdownCategories'])->name('topdowncategories');
+
+
+// Add service routes
+Route::get('/services/create', [ServiceController::class, 'create'])->name('service.create');
+Route::post('/services', [ServiceController::class, 'store'])->name('service.store');
+
+
+// Route for displaying all services
+Route::get('/services/lists', [ServiceController::class, 'index'])->name('services.index');
+
+Route::get('/userservices/lists', [ServiceController::class, 'user_show'])->name('services_user');
+
+//for drop down  show service
+Route::get('/servicess', [ServiceController::class, 'showServices'])->name('showServices');

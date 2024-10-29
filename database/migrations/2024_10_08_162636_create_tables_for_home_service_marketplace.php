@@ -33,6 +33,7 @@ class CreateTablesForHomeServiceMarketplace extends Migration
             $table->unsignedBigInteger('category_id');
             $table->string('service_name');
             $table->text('description');
+            $table->string('image_path')->nullable();
             $table->timestamps();
 
             // Foreign key relation
