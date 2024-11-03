@@ -29,8 +29,8 @@
             </div>
             <nav class="mt-4">
                 <ul>
-                    <li class="p-4 hover:bg-gray-700"><a href="/admin/users">Users</a></li>
-                    <li class="p-4 hover:bg-gray-700"><a href="/admin/providers">Service Providers</a></li>
+                    <li class="p-4 hover:bg-gray-700"><a href="{{ route('users.index') }}">Users</a></li>
+                    <li class="p-4 hover:bg-gray-700"><a href="{{ route('service_provider_list') }}">Service Providers</a></li>
                     <li class="p-4 hover:bg-gray-700"><a href="{{ route('categories.index') }}">Category</a></li>
                     <li class="p-4 hover:bg-gray-700"><a href="{{ route('services.index') }}">Service</a></li>
                     <li class="p-4 hover:bg-gray-700"><a href="/admin/settings">Settings</a></li>
@@ -46,7 +46,8 @@
                 <h1 class="text-2xl font-semibold">Dashboard</h1>
                 <div>
                     <span class="text-gray-800">Admin</span>
-                    <button class="ml-4 px-4 py-2 bg-blue-500 text-white rounded">Profile</button>
+                    <!-- Link to the profile route -->
+                    <a href="{{ route('admin.profile') }}" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded">Profile</a>
                 </div>
             </div>
 

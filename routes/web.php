@@ -23,10 +23,10 @@ use App\Http\Controllers\AdminController;
 
 //how to route a controller
 Route::get('/about', [HomeController::class, 'about']);
-Route::get('/', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'showHomePage'])->name('home');
 
 Route::get('/home', function () {
-    return view('home');  // Points to home.blade.php
+    return view('home');  
 })->name('home');
 
 Route::get('/chat_page', [HomeController::class, 'chat_page']);
@@ -50,7 +50,7 @@ Route::get('/service_listing_page', [HomeController::class, 'service']);
 Route::get('/service_provider_dashboard', [HomeController::class, 'service_provider_dashboard']);
 Route::get('/signin', [HomeController::class, 'signin']);
 
-Route::get('/signup', [HomeController::class, 'signup']);
+Route::get('/signup', [HomeController::class, 'signup'])->name('signup');
 
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
@@ -108,6 +108,9 @@ Route::get('/profile', function () {
 
 
 Route::get('/admin', [AdminController::class, 'admin']) ->name('admin') ;
+Route::get('/admin_register', [AdminController::class, 'showRegistrationForm'])->name('admin.register');
+Route::post('/admin_register', [AdminController::class, 'register']);
+Route::get('/admin_profile', [AdminController::class, 'showProfile'])->name('admin.profile');
 
 
 
@@ -127,6 +130,7 @@ Route::get('/topdowncategories', [CategoryController::class, 'topdownCategories'
 
 
 // Add service routes
+Route::get('/service_listing_page', [ServiceController::class, 'index1'])->name('service.listing');
 Route::get('/services/create', [ServiceController::class, 'create'])->name('service.create');
 Route::post('/services', [ServiceController::class, 'store'])->name('service.store');
 
@@ -138,3 +142,8 @@ Route::get('/userservices/lists', [ServiceController::class, 'user_show'])->name
 
 //for drop down  show service
 Route::get('/servicess', [ServiceController::class, 'showServices'])->name('showServices');
+
+
+Route::get('admin/userslist', [RegisterController::class, 'index'])->name('users.index');
+
+Route::get('/service-providers', [ServiceProviderController::class, 'index'])->name('service_provider_list');

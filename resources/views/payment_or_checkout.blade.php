@@ -58,7 +58,7 @@
       <form action="#" method="POST">
         <div class="mb-4">
           <label class="block text-sm font-medium text-gray-700 mb-2" for="card-name">Name on Card</label>
-          <input type="text" id="card-name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="John Doe" required>
+          <input type="text" id="card-name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder=" MD Mursalin" required>
         </div>
         <div class="mb-4">
           <label class="block text-sm font-medium text-gray-700 mb-2" for="card-number">Card Number</label>

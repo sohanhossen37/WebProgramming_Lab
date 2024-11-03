@@ -23,7 +23,9 @@ class CreateTablesForHomeServiceMarketplace extends Migration
         // Service Categories Table
         Schema::create('service_categories', function (Blueprint $table) {
             $table->id('category_id');
+            
             $table->string('category_name');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
 
@@ -102,17 +104,17 @@ class CreateTablesForHomeServiceMarketplace extends Migration
         });
 
         // Service Requests Table
-        Schema::create('service_requests', function (Blueprint $table) {
-            $table->id('request_id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('service_id');
-            $table->text('details');
-            $table->timestamps();
+        // Schema::create('service_requests', function (Blueprint $table) {
+        //     $table->id('request_id');
+        //     $table->unsignedBigInteger('user_id');
+        //     $table->unsignedBigInteger('service_id');
+        //     $table->text('details');
+        //     $table->timestamps();
 
-            // Foreign key relations
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
-            $table->foreign('service_id')->references('service_id')->on('services')->onDelete('cascade');
-        });
+        //     // Foreign key relations
+        //     $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+        //     $table->foreign('service_id')->references('service_id')->on('services')->onDelete('cascade');
+        // });
 
         // Job Offers Table
         Schema::create('job_offers', function (Blueprint $table) {

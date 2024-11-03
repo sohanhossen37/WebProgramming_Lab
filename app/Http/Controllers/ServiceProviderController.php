@@ -93,6 +93,13 @@ class ServiceProviderController extends Controller
         return response()->json(['upazilas' => $upazilas]);
     }
 
-    // The store method for registering service providers (already written)
+    public function index(){
+         // Fetch all service providers with related user and upazila data
+         $serviceProviders = ServiceProvider::with(['user', 'upazila'])->get();
+        
+         // Pass the service providers to the view
+         return view('service_provider.service_provider_list', compact('serviceProviders'));
+    }
+    
 }
 

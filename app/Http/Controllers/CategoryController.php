@@ -18,15 +18,20 @@ class CategoryController extends Controller
         {
             $request->validate([
                 'category_name' => 'required|string|max:255',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
             ]);
-    
-            // Create a new category
-          Category::create([
-                'category_name' => $request->category_name,
-            ]);
-    
+        
+            $data = ['category_name' => $request->category_name];
+        
+            if ($request->hasFile('image')) {
+                $data['image'] = $request->file('image')->store('category_images', 'public');
+            }
+        
+            Category::create($data);
+        
             return redirect()->route('service.create')->with('success', 'Category added successfully!');
         }
+        
 
 
         //show all categories

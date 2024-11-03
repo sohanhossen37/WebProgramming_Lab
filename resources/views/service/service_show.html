@@ -1,0 +1,18 @@
+<!-- resources/views/service/show.blade.php -->
+
+@extends('layouts.app') <!-- Adjust this based on your layout -->
+
+@section('content')
+<div class="container mx-auto my-8 p-5 bg-white shadow-lg rounded-lg">
+    <h1 class="text-3xl font-bold mb-4">{{ $service->service_name }}</h1>
+
+    @if($service->image_path)
+        <img src="{{ asset($service->image_path) }}" alt="{{ $service->service_name }}" class="w-full h-64 object-cover rounded-lg mb-4">
+    @endif
+
+    <h2 class="text-xl font-semibold">Description:</h2>
+    <p class="mb-4">{{ $service->description }}</p>
+
+    <h3 class="text-lg">Category: {{ $service->category->category_name }}</h3> <!-- Adjust if your category model has a different attribute -->
+</div>
+@endsection

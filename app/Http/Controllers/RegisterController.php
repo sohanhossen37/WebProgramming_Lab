@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+    
     public function register(Request $request)
     {
         // Validate the input fields
@@ -43,6 +44,9 @@ class RegisterController extends Controller
         // Redirect the user after successful registration
         return redirect()->route('signin')->with('success', 'Account created successfully. Please sign in.');
     }
-    
-    
+    public function index(){
+        $users = User::all(); //fetch all user from database
+        return view('user.userlist',compact('users'));
+    }
+
 }

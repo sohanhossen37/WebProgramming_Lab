@@ -25,11 +25,15 @@
     <div class="container mx-auto mt-6">
         <div class="bg-white p-6 rounded-lg shadow-md">
             <h1 class="text-2xl font-semibold mb-4">Add New Category</h1>
-            <form action="{{ route('categories.store') }}" method="POST">
+            <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4">
                     <label for="category_name" class="block text-gray-700 text-sm font-bold mb-2">Category Name:</label>
                     <input type="text" name="category_name" id="category_name" required class="border border-gray-300 p-2 rounded w-full">
+                </div>
+                <div class="mb-4">
+                    <label for="image" class="block text-gray-700 text-sm font-bold mb-2">Category Image:</label>
+                    <input type="file" name="image" id="image" accept="image/*" class="border border-gray-300 p-2 rounded w-full">
                 </div>
                 <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Add Category</button>
             </form>

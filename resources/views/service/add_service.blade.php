@@ -27,7 +27,7 @@
             </div>
         @endif
 
-        <form action="{{ route('service.store') }}" method="POST">
+        <form action="{{ route('service.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-4">
                 <label for="service_name" class="block text-gray-700">Service Name</label>
@@ -47,6 +47,12 @@
                         <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
                     @endforeach
                 </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="image" class="block text-gray-700">Service Image</label>
+                <input type="file" name="image" id="image" class="mt-1 block w-full border-gray-300 rounded-md">
+                <p class="text-sm text-gray-500 mt-1">Accepted file types: jpeg, png, jpg, gif. Max size: 2MB.</p>
             </div>
 
             <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Add Service</button>

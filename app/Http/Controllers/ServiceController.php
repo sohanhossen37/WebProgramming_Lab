@@ -62,4 +62,18 @@ class ServiceController extends Controller
         return view('home', compact('services'));
     }
 
+    public function index1()
+    {
+        // Get all services with their categories
+        $services = Service::with('category')->get();
+
+        // Group services by category
+        $groupedServices = $services->groupBy(function ($service) {
+            return $service->category ? $service->category->category_name : 'Uncategorized'; // Handle uncategorized services
+        });
+
+        return view('service.service_listing_page', compact('groupedServices'));
+    }
+
+
 }

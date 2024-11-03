@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Category; 
 
 
 class HomeController extends Controller
 {
 
+    public function showHomePage()
+{
+    // Fetch all categories with their associated services
+    $categories = Category::with('services')->get();
 
-    function home() {
-        return view('home'); // Assuming you have a home.blade.php in resources/views
-    }
+    return view('home', compact('categories'));
+}
 
 
     function about() {
